@@ -1,500 +1,557 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Viral Zone - Watch & Join</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        telegram: {
-                            bg: '#0b0716',
-                            card: '#150d2a',
-                            accent: '#a855f7',
-                            purple: '#9333ea',
-                            violet: '#c084fc',
-                            emerald: '#10b981'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- Telegram WebApp JS -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Adsgram SDK -->
-    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#070002">
+<title>OB55 FREE SENSI STORE !! </title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+<style>
+:root {
+  --bg-color: #070002;
+  --card-bg: rgba(26, 6, 10, 0.85);
+  --border-color: rgba(255, 42, 77, 0.25);
+  --accent-red: #ff2a4d;
+  --accent-dark: #9e001c;
+  --accent-glow: rgba(255, 42, 77, 0.45);
+  --success-green: #10b981;
+  --text-main: #ffffff;
+  --text-muted: #b8a9ac;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0716;
-            color: #f3e8ff;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-        .glass-panel {
-            background: rgba(21, 13, 42, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(192, 132, 252, 0.15);
-        }
+html, body {
+  min-height: 100%;
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
 
-        .glass-card {
-            background: linear-gradient(135deg, rgba(29, 17, 56, 0.85) 0%, rgba(15, 8, 30, 0.95) 100%);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(168, 85, 247, 0.18);
-        }
-    </style>
+#app {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at top center, #26040d 0%, #070002 75%);
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-badge {
+  background: rgba(255, 42, 77, 0.1);
+  border: 1px solid rgba(255, 42, 77, 0.35);
+  color: #ff99ab;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  padding: 6px 18px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(255, 42, 77, 0.15);
+}
+
+.header-group {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.hub-title {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px 0;
+  background: linear-gradient(180deg, #ffffff 35%, #ff99ab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hub-subheading {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.slot-card {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, #ff2a4d, #4a000e, #ff2a4d);
+  box-shadow: 0 6px 18px rgba(255, 42, 77, 0.2);
+}
+
+.thumbnail-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #120205;
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(7, 0, 2, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  box-shadow: 0 0 6px var(--accent-red);
+}
+
+.status-dot.unlocked {
+  background: var(--success-green);
+  box-shadow: 0 0 6px var(--success-green);
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff99ab;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step-bars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  width: 100%;
+}
+
+.step-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.step-bar.completed {
+  background: linear-gradient(90deg, #ff2a4d, #ff6b84);
+  box-shadow: 0 0 8px rgba(255, 42, 77, 0.6);
+}
+
+.step-bar.all-done {
+  background: linear-gradient(90deg, #059669, #10b981);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.watch-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #ff2a4d, #b30024);
+  border: 1px solid rgba(255, 153, 171, 0.45);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13.5px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 6px 16px var(--accent-glow);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.watch-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.watch-btn.unlocked-link {
+  background: linear-gradient(135deg, #059669, #10b981);
+  border: 1px solid rgba(167, 243, 208, 0.5);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+  animation: pulseSuccess 2s infinite;
+}
+
+.watch-btn.unlocked-link:active {
+  transform: scale(0.97);
+}
+
+.footer-note {
+  font-size: 12px;
+  color: #8f8083;
+  text-align: center;
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1a0409;
+  border: 1px solid rgba(255, 42, 77, 0.6);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
+}
+
+#toast.on {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSuccess {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-between pb-20 antialiased overflow-x-hidden">
+<body>
 
-    <!-- Toast Notification Container -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 opacity-0 transform -translate-y-4 pointer-events-none">
-        <div class="glass-panel px-4 py-2.5 rounded-full shadow-2xl flex items-center space-x-2 border border-purple-500/40 bg-purple-950/80">
-            <span id="toast-icon" class="text-purple-300"><i class="fas fa-info-circle"></i></span>
-            <span id="toast-msg" class="text-xs font-semibold text-purple-100">Notification message</span>
-        </div>
+<div id="app">
+  <div class="main-container">
+    <div class="welcome-badge">Official VIP Access</div>
+
+    <div class="header-group">
+      <h1 class="hub-title">OB55 FREE SENSI STORE !!</h1>
+      <p class="hub-subheading">Daily leak Free sensi</p>
     </div>
 
-    <!-- Main Container -->
-    <div class="w-full max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 relative">
-        
-        <!-- HEADER BAR -->
-        <header class="w-full flex items-center justify-between py-2 px-1 mb-3">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-700 via-purple-500 to-fuchsia-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-purple-600/30">
-                    <div class="w-full h-full bg-purple-950 rounded-[14px] flex items-center justify-center">
-                        <i class="fas fa-bolt text-purple-300 text-lg animate-pulse"></i>
-                    </div>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-base tracking-wide flex items-center gap-1.5">
-                        <span class="bg-gradient-to-r from-purple-200 via-purple-400 to-fuchsia-300 bg-clip-text text-transparent">VIRAL ZONE</span>
-                        <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-400/40 px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider">VIP</span>
-                    </h1>
-                    <p class="text-[10px] text-purple-300/60 font-medium">Watch 4 Ads to Join Exclusive Group</p>
-                </div>
-            </div>
-
-            <!-- Lock Counter Badge -->
-            <div class="flex items-center space-x-2">
-                <div class="glass-panel px-3 py-1 rounded-full flex items-center space-x-1.5 border border-purple-400/30 bg-purple-900/30">
-                    <i class="fas fa-shield-halved text-purple-300 text-xs"></i>
-                    <span id="badge-status" class="text-xs font-bold text-purple-200">Locked</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- MAIN MEDIA CONTENT CARD -->
-        <main class="flex-1 flex flex-col justify-start space-y-4">
-
-            <!-- Video/Image Container Card -->
-            <div class="glass-card rounded-3xl p-3 shadow-2xl relative overflow-hidden group">
-                <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-purple-950/80 border border-purple-800/50 flex items-center justify-center">
-                    
-                    <div id="locked-view" class="w-full h-full relative flex items-center justify-center">
-                        <img id="video-thumbnail" src="https://i.ibb.co/rgJpkcb/b5590eff-efb3-4ff7-b791-cd706aea9a6e.jpg" 
-                             alt="Viral Clip Preview" 
-                             class="w-full h-full object-cover filter blur-[6px] scale-105 transition-all duration-700 opacity-80"
-                             onerror="this.src='https://placehold.co/600x337/150d2a/c084fc?text=VIP+Group+Locked'">
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-purple-950 via-purple-950/70 to-transparent"></div>
-
-                        <div id="lock-badge-center" class="absolute flex flex-col items-center justify-center text-center p-3">
-                            <div class="w-14 h-14 rounded-full bg-purple-950/90 border border-purple-400/50 flex items-center justify-center mb-2 shadow-xl shadow-purple-900/40">
-                                <i class="fas fa-lock text-purple-300 text-xl"></i>
-                            </div>
-                            <span class="text-xs font-bold text-purple-100 tracking-wide uppercase bg-purple-900/80 px-3 py-1 rounded-full border border-purple-600/50 backdrop-blur-md">
-                                Group Link Locked
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="absolute top-3 left-3 z-10 flex items-center space-x-1.5">
-                        <span class="bg-purple-950/80 backdrop-blur-md border border-purple-400/40 text-purple-200 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-lg">
-                            <i class="fas fa-fire text-amber-300"></i> Trending Group
-                        </span>
-                    </div>
-
-                    <div class="absolute top-3 right-3 z-10">
-                        <span id="status-pill" class="bg-purple-900/40 backdrop-blur-md border border-purple-400/40 text-purple-200 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                            <i class="fas fa-lock text-[9px]"></i> <span id="status-pill-text">0/4 Ads</span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="mt-3 px-1">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h2 class="text-sm font-bold text-purple-50 line-clamp-1">Join VIP Telegram Private Community</h2>
-                            <div class="flex items-center space-x-2 mt-1">
-                                <span class="text-[10px] text-purple-300 font-medium">#Telegram</span>
-                                <span class="text-[10px] text-fuchsia-300 font-medium">#VIP</span>
-                                <span class="text-[10px] text-purple-300/50">• 1.6k Members</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center space-x-1 bg-purple-950/90 p-1 rounded-xl border border-purple-800/60">
-                            <button id="like-btn" onclick="toggleReaction('like')" class="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-purple-300 hover:text-purple-100 transition-all active:scale-95">
-                                <i id="like-icon" class="fa-regular fa-thumbs-up text-xs"></i>
-                                <span id="like-count" class="text-[11px] font-bold">14.2k</span>
-                            </button>
-                            <div class="h-3 w-[1px] bg-purple-800/60"></div>
-                            <button id="dislike-btn" onclick="toggleReaction('dislike')" class="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-purple-300 hover:text-rose-300 transition-all active:scale-95">
-                                <i id="dislike-icon" class="fa-regular fa-thumbs-down text-xs"></i>
-                                <span id="dislike-count" class="text-[11px] font-bold">128</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- UNLOCK PROGRESS SECTION -->
-            <div id="unlock-section" class="glass-card rounded-3xl p-4 shadow-xl border border-purple-500/25 relative overflow-hidden">
-                <div class="flex items-center justify-between mb-2">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-7 h-7 rounded-lg bg-purple-800/40 border border-purple-400/30 flex items-center justify-center text-purple-300 text-xs">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
-                        <span class="text-xs font-bold text-purple-100">Unlock Progress</span>
-                    </div>
-                    <span id="progress-text" class="text-xs font-extrabold text-purple-300 tracking-wider">0 / 4 ADS</span>
-                </div>
-
-                <div class="grid grid-cols-4 gap-2 my-3">
-                    <div id="step-1" class="h-2 rounded-full bg-purple-950/80 border border-purple-800/50 transition-all duration-500"></div>
-                    <div id="step-2" class="h-2 rounded-full bg-purple-950/80 border border-purple-800/50 transition-all duration-500"></div>
-                    <div id="step-3" class="h-2 rounded-full bg-purple-950/80 border border-purple-800/50 transition-all duration-500"></div>
-                    <div id="step-4" class="h-2 rounded-full bg-purple-950/80 border border-purple-800/50 transition-all duration-500"></div>
-                </div>
-
-                <p id="unlock-status-desc" class="text-[11px] text-purple-300/70 text-center mb-4">
-                    Watch <span class="text-purple-300 font-semibold" id="ads-remaining-count">4 more ads</span> to unlock the VIP Group link.
-                </p>
-
-                <!-- WATCH AD BUTTON -->
-                <button id="watch-ad-btn" onclick="triggerAd()" class="w-full relative group overflow-hidden rounded-2xl p-[2px] focus:outline-none transition-all duration-300 transform active:scale-95 shadow-lg shadow-purple-900/40">
-                    <span class="absolute inset-0 bg-gradient-to-r from-purple-700 via-purple-500 to-fuchsia-500 rounded-2xl"></span>
-                    <div class="relative px-6 py-3.5 bg-purple-950 rounded-[14px] flex items-center justify-center space-x-2 transition duration-300 group-hover:bg-opacity-80">
-                        <i id="btn-icon" class="fas fa-play text-purple-300 text-sm"></i>
-                        <span id="btn-text" class="text-xs font-extrabold text-purple-100 tracking-wide uppercase">
-                            Watch Ad 1/4
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-purple-400"></i>
-                    </div>
-                </button>
-            </div>
-
-            <!-- UNLOCKED JOIN GROUP CARD (SHOWS AFTER 4 ADS) -->
-            <div id="unlocked-action-card" class="glass-card rounded-3xl p-5 shadow-xl border border-purple-400/40 hidden flex-col items-center text-center space-y-4">
-                <div class="w-14 h-14 rounded-full bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-200 text-2xl animate-bounce">
-                    <i class="fab fa-telegram"></i>
-                </div>
-                <div>
-                    <h3 class="text-base font-extrabold text-purple-50">Congratulations! Link Unlocked</h3>
-                    <p class="text-xs text-purple-300/70 mt-1">Click the button below to join our private Telegram group.</p>
-                </div>
-
-                <!-- DIRECT TELEGRAM JOIN BUTTON -->
-                <button onclick="redirectToGroup()" class="w-full py-4 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-500 text-white rounded-2xl text-sm font-extrabold hover:brightness-110 transition active:scale-95 flex items-center justify-center space-x-2 shadow-lg shadow-purple-900/50 uppercase tracking-wider">
-                    <i class="fab fa-telegram-plane text-lg"></i>
-                    <span>Join Telegram Group</span>
-                </button>
-            </div>
-
-        </main>
-
-        <!-- FOOTER NAVIGATION -->
-        <footer class="fixed bottom-3 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md z-40">
-            <div class="glass-panel rounded-2xl px-6 py-2.5 flex items-center justify-around border border-purple-800/50 shadow-2xl">
-                <button class="flex flex-col items-center space-y-1 text-purple-300">
-                    <i class="fas fa-house text-base"></i>
-                    <span class="text-[10px] font-bold">Home</span>
-                </button>
-                <button class="flex flex-col items-center space-y-1 text-purple-400/50">
-                    <i class="fas fa-fire text-base"></i>
-                    <span class="text-[10px] font-bold">Trending</span>
-                </button>
-            </div>
-        </footer>
-
+    <!-- SLOT 1 -->
+    <div class="slot-card">
+      <div class="thumbnail-wrapper">
+        <div class="thumbnail-inner">
+          <img src="https://i.ibb.co/8n3JpVX3/download-9.jpg" alt="Earning Hub Thumbnail" class="thumbnail-img">
+          <div class="thumbnail-badge">
+            <span class="status-dot" id="dot-0"></span>
+            <span id="badge-text-0">Link Locked</span>
+          </div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Verification Progress</span>
+          <span id="prog-count-0">0 / 5 Completed</span>
+        </div>
+        <div class="step-bars">
+          <div class="step-bar" id="s0-bar-1"></div>
+          <div class="step-bar" id="s0-bar-2"></div>
+          <div class="step-bar" id="s0-bar-3"></div>
+          <div class="step-bar" id="s0-bar-4"></div>
+          <div class="step-bar" id="s0-bar-5"></div>
+        </div>
+      </div>
+      <button class="watch-btn" id="watch-btn-0" onclick="handleSlotAction(0)">
+        <span id="btn-icon-0">▶</span>
+        <span id="btn-text-0">Watch Ads (0/5)</span>
+      </button>
     </div>
 
-    <!-- MOCK AD MODAL -->
-    <div id="ad-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex-col items-center justify-between p-6">
-        <div class="w-full flex items-center justify-between">
-            <span class="text-xs bg-purple-950 text-purple-200 px-3 py-1 rounded-full border border-purple-800">
-                Sponsored Ad
-            </span>
-            <span id="ad-timer" class="text-xs font-mono font-bold bg-purple-900/40 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full">
-                Ad ends in 5s
-            </span>
+    <!-- SLOT 2 -->
+    <div class="slot-card">
+      <div class="thumbnail-wrapper">
+        <div class="thumbnail-inner">
+          <img src="https://i.ibb.co/bDvVgPb/download-10.jpg" alt="Earning Hub Thumbnail" class="thumbnail-img">
+          <div class="thumbnail-badge">
+            <span class="status-dot" id="dot-1"></span>
+            <span id="badge-text-1">Link Locked</span>
+          </div>
         </div>
-
-        <div class="w-full max-w-xs aspect-square glass-card rounded-3xl p-6 flex flex-col items-center justify-center text-center space-y-4 border border-purple-500/30">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-fuchsia-500 p-[2px] flex items-center justify-center animate-pulse">
-                <div class="w-full h-full bg-purple-950 rounded-[14px] flex items-center justify-center">
-                    <i class="fas fa-rectangle-ad text-2xl text-purple-300"></i>
-                </div>
-            </div>
-            <div>
-                <h4 id="ad-modal-block-title" class="text-base font-extrabold text-purple-100">Sponsor Video Ad</h4>
-                <p class="text-xs text-purple-300/70 mt-1">Watch full ad to register progress.</p>
-            </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Verification Progress</span>
+          <span id="prog-count-1">0 / 5 Completed</span>
         </div>
-
-        <div class="w-full flex justify-center pb-4">
-            <button id="ad-close-btn" disabled onclick="completeAdWatch()" class="px-6 py-2.5 bg-purple-950 text-purple-400/60 rounded-full text-xs font-bold border border-purple-800/80 opacity-50 cursor-not-allowed">
-                Wait <span id="close-timer">5</span>s
-            </button>
+        <div class="step-bars">
+          <div class="step-bar" id="s1-bar-1"></div>
+          <div class="step-bar" id="s1-bar-2"></div>
+          <div class="step-bar" id="s1-bar-3"></div>
+          <div class="step-bar" id="s1-bar-4"></div>
+          <div class="step-bar" id="s1-bar-5"></div>
         </div>
+      </div>
+      <button class="watch-btn" id="watch-btn-1" onclick="handleSlotAction(1)">
+        <span id="btn-icon-1">▶</span>
+        <span id="btn-text-1">Watch Ads (0/5)</span>
+      </button>
     </div>
 
-    <script>
-        // ----------------------------------------------------
-        // 1. ഇവിടെ നിങ്ങളുടെ ടെലിഗ്രാം ഗ്രൂപ്പ് ലിങ്ക് കൊടുക്കുക
-        // ----------------------------------------------------
-        const TELEGRAM_GROUP_LINK = "https://t.me/+FyeN4Ugl5jk4ZWM1";
+    <!-- SLOT 3 -->
+    <div class="slot-card">
+      <div class="thumbnail-wrapper">
+        <div class="thumbnail-inner">
+          <img src="https://i.ibb.co/7NXBhnX0/Download-Scifi-Movie-Trailer-Coming-Soon-Text-Reveal-for-free.jpg" alt="Earning Hub Thumbnail" class="thumbnail-img">
+          <div class="thumbnail-badge">
+            <span class="status-dot" id="dot-2"></span>
+            <span id="badge-text-2">Link Locked</span>
+          </div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Verification Progress</span>
+          <span id="prog-count-2">0 / 5 Completed</span>
+        </div>
+        <div class="step-bars">
+          <div class="step-bar" id="s2-bar-1"></div>
+          <div class="step-bar" id="s2-bar-2"></div>
+          <div class="step-bar" id="s2-bar-3"></div>
+          <div class="step-bar" id="s2-bar-4"></div>
+          <div class="step-bar" id="s2-bar-5"></div>
+        </div>
+      </div>
+      <button class="watch-btn" id="watch-btn-2" onclick="handleSlotAction(2)">
+        <span id="btn-icon-2">▶</span>
+        <span id="btn-text-2">Watch Ads (0/5)</span>
+      </button>
+    </div>
 
-        // 4 AD BLOCK IDs
-        const AD_BLOCK_IDS = {
-            1: "int-58039",
-            2: "58040",
-            3: "int-58041",
-            4: "57735"
-        };
+    <div class="footer-note" id="footerNote">
+      Watch 5 ads and you get free sensi 
+    </div>
+  </div>
+</div>
 
-        let adProgress = 0;
-        const maxAds = 4;
-        let isLiked = false;
-        let isDisliked = false;
-        let likeCount = 14200;
-        let dislikeCount = 128;
-        let adCountdownTimer = null;
+<div id="toast"></div>
 
-        let tg = null;
-        if (window.Telegram && window.Telegram.WebApp) {
-            tg = window.Telegram.WebApp;
-            tg.expand();
+<script>
+(function() {
+  "use strict";
+
+  // 3 slots x 5 Adsgram block IDs each
+  var SLOTS_ADS = [
+    ["int-58039", "58240", "int-58041", "57735", "60593"],
+    ["int-60594", "60595", "60596", "int-60597", "60598"],
+    ["slot3-block-1", "slot3-block-2", "slot3-block-3", "slot3-block-4", "slot3-block-5"]
+  ];
+
+  // Specific link for each slot after watching 5 ads
+  var SLOT_LINKS = [
+    "https://t.me/+up_18EEy_0oyNjVl", // Slot 1 link[cite: 1]
+    "https://t.me/+up_18EEy_0oyNjVl", // Slot 2 link (replace with specific link)[cite: 1]
+    "https://t.me/+up_18EEy_0oyNjVl"  // Slot 3 link (replace with specific link)[cite: 1]
+  ];
+
+  var totalSlots = 3;
+  var maxAdsPerSlot = 5;
+  var slotCounts = [0, 0, 0];
+  var activePlayingSlot = null;
+
+  var TG = window.Telegram && window.Telegram.WebApp;
+  if (TG) {
+    try {
+      TG.ready();
+      TG.expand();
+      if (TG.setHeaderColor) TG.setHeaderColor("#070002");
+      if (TG.setBackgroundColor) TG.setBackgroundColor("#070002");
+    } catch (e) {}
+  }
+
+  function showToast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("on");
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function() {
+      t.classList.remove("on");
+    }, 2600);
+  }
+
+  function openSpecificLink(url) {
+    if (TG && TG.openTelegramLink && url.indexOf("t.me/") !== -1) {
+      TG.openTelegramLink(url);
+    } else if (TG && TG.openLink) {
+      TG.openLink(url);
+    } else {
+      window.open(url, "_blank");
+    }
+  }
+
+  function updateAllUI() {
+    for (var s = 0; s < totalSlots; s++) {
+      var count = slotCounts[s];
+      var progCount = document.getElementById("prog-count-" + s);
+      var badgeText = document.getElementById("badge-text-" + s);
+      var dot = document.getElementById("dot-" + s);
+      var watchBtn = document.getElementById("watch-btn-" + s);
+      var btnIcon = document.getElementById("btn-icon-" + s);
+      var btnText = document.getElementById("btn-text-" + s);
+
+      progCount.textContent = count + " / " + maxAdsPerSlot + " Completed";
+
+      for (var b = 1; b <= maxAdsPerSlot; b++) {
+        var bar = document.getElementById("s" + s + "-bar-" + b);
+        if (b <= count) {
+          bar.classList.add("completed");
+          if (count >= maxAdsPerSlot) {
+            bar.classList.add("all-done");
+          }
+        } else {
+          bar.classList.remove("completed", "all-done");
         }
+      }
 
-        window.onload = function() {
-            updateUI();
-        };
+      if (count < maxAdsPerSlot) {
+        watchBtn.classList.remove("unlocked-link");
+        btnIcon.textContent = "▶";
+        btnText.textContent = "Watch Ads (" + count + "/" + maxAdsPerSlot + ")";
+      } else {
+        watchBtn.classList.add("unlocked-link");
+        btnIcon.textContent = "🔓";
+        btnText.textContent = "Open Unlocked Link";
+        dot.classList.add("unlocked");
+        badgeText.textContent = "Link Unlocked";
+      }
+    }
+  }
 
-        function triggerAd() {
-            if (adProgress >= maxAds) {
-                showToast("Already unlocked!", "fa-check-circle");
-                return;
-            }
+  window.handleSlotAction = function(slotIndex) {
+    if (activePlayingSlot !== null) return;
 
-            const currentAdStep = adProgress + 1;
-            const currentBlockId = AD_BLOCK_IDS[currentAdStep];
+    // If 5 ads already watched in this slot, open its specific link
+    if (slotCounts[slotIndex] >= maxAdsPerSlot) {
+      var targetUrl = SLOT_LINKS[slotIndex];
+      showToast("Opening unlocked link...");
+      setTimeout(function() {
+        openSpecificLink(targetUrl);
+      }, 350);
+      return;
+    }
 
-            if (window.Adsgram) {
-                try {
-                    const adController = window.Adsgram.init({ 
-                        blockId: currentBlockId,
-                        debug: false
-                    });
+    var currentAdIndex = slotCounts[slotIndex];
+    var currentBlockId = SLOTS_ADS[slotIndex][currentAdIndex];
+    var btnText = document.getElementById("btn-text-" + slotIndex);
 
-                    adController.show().then(() => {
-                        onAdCompletedSuccess();
-                    }).catch((error) => {
-                        console.warn(`Ad step ${currentAdStep} fallback:`, error);
-                        showAdSimulator(currentAdStep);
-                    });
-                    return;
-                } catch (e) {
-                    console.log("SDK error fallback:", e);
-                }
-            }
+    activePlayingSlot = slotIndex;
+    btnText.textContent = "Loading Ad " + (currentAdIndex + 1) + "/5...";
 
-            showAdSimulator(currentAdStep);
+    if (!window.Adsgram) {
+      setTimeout(function() {
+        slotCounts[slotIndex]++;
+        activePlayingSlot = null;
+        updateAllUI();
+        if (slotCounts[slotIndex] >= maxAdsPerSlot) {
+          if (TG && TG.HapticFeedback) TG.HapticFeedback.notificationOccurred("success");
+          showToast("Slot " + (slotIndex + 1) + " link unlocked!");
+        } else {
+          showToast("Ad " + slotCounts[slotIndex] + "/5 watched! " + (maxAdsPerSlot - slotCounts[slotIndex]) + " remaining.");
         }
+      }, 700);
+      return;
+    }
 
-        function showAdSimulator(step) {
-            const modal = document.getElementById('ad-modal');
-            const closeBtn = document.getElementById('ad-close-btn');
-            const timerText = document.getElementById('ad-timer');
-            const blockTitle = document.getElementById('ad-modal-block-title');
-
-            blockTitle.innerText = `Sponsor Video Ad #${step}`;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-
-            let timeLeft = 5;
-            closeBtn.disabled = true;
-            closeBtn.className = "px-6 py-2.5 bg-purple-950 text-purple-400/60 rounded-full text-xs font-bold border border-purple-800/80 opacity-50 cursor-not-allowed";
-            closeBtn.innerHTML = `Wait <span id="close-timer">${timeLeft}</span>s`;
-            timerText.innerText = `Ad ends in ${timeLeft}s`;
-
-            clearInterval(adCountdownTimer);
-            adCountdownTimer = setInterval(() => {
-                timeLeft--;
-                if (document.getElementById('close-timer')) {
-                    document.getElementById('close-timer').innerText = timeLeft;
-                }
-                timerText.innerText = `Ad ends in ${timeLeft}s`;
-
-                if (timeLeft <= 0) {
-                    clearInterval(adCountdownTimer);
-                    closeBtn.disabled = false;
-                    closeBtn.className = "px-6 py-2.5 bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white rounded-full text-xs font-bold shadow-lg animate-pulse cursor-pointer";
-                    closeBtn.innerHTML = `<i class="fas fa-check-circle mr-1"></i> Continue & Verify`;
-                }
-            }, 1000);
-        }
-
-        function completeAdWatch() {
-            const modal = document.getElementById('ad-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            onAdCompletedSuccess();
-        }
-
-        function onAdCompletedSuccess() {
-            adProgress++;
-            showToast(`Ad ${adProgress}/4 Completed!`, "fa-circle-check");
-            updateUI();
-
-            if (adProgress === maxAds) {
-                triggerUnlockAnimation();
-            }
-        }
-
-        function updateUI() {
-            document.getElementById('progress-text').innerText = `${adProgress} / ${maxAds} ADS`;
-            document.getElementById('status-pill-text').innerText = `${adProgress}/${maxAds} Ads`;
-            
-            const btnText = document.getElementById('btn-text');
-            const remaining = maxAds - adProgress;
-
-            if (adProgress < maxAds) {
-                btnText.innerText = `Watch Ad ${adProgress + 1}/${maxAds}`;
-                document.getElementById('ads-remaining-count').innerText = `${remaining} more ad${remaining > 1 ? 's' : ''}`;
+    try {
+      var AdController = window.Adsgram.init({ blockId: currentBlockId });
+      AdController.show()
+        .then(function(result) {
+          activePlayingSlot = null;
+          if (result && result.done) {
+            slotCounts[slotIndex]++;
+            updateAllUI();
+            if (slotCounts[slotIndex] >= maxAdsPerSlot) {
+              if (TG && TG.HapticFeedback) TG.HapticFeedback.notificationOccurred("success");
+              showToast("Slot " + (slotIndex + 1) + " link unlocked!");
             } else {
-                btnText.innerText = `UNLOCKED`;
-                document.getElementById('badge-status').innerText = "Unlocked";
-                document.getElementById('badge-status').className = "text-xs font-bold text-emerald-400";
+              showToast("Ad " + slotCounts[slotIndex] + "/5 watched! " + (maxAdsPerSlot - slotCounts[slotIndex]) + " remaining.");
             }
+          } else {
+            updateAllUI();
+            showToast("ആഡ് മുഴുവനായി കണ്ടാൽ മാത്രമേ അടുത്തതിലേക്ക് പോവുകയുള്ളൂ.");
+          }
+        })
+        .catch(function(err) {
+          activePlayingSlot = null;
+          updateAllUI();
+          showToast("ആഡ് ലോഡ് ചെയ്യുന്നതിൽ തടസ്സം നേരിട്ടു. വീണ്ടും ശ്രമിക്കുക.");
+        });
+    } catch (e) {
+      activePlayingSlot = null;
+      updateAllUI();
+      showToast("ആഡ് സിസ്റ്റം എറർ. വീണ്ടും ശ്രമിക്കുക.");
+    }
+  };
 
-            for (let i = 1; i <= maxAds; i++) {
-                const step = document.getElementById(`step-${i}`);
-                if (i <= adProgress) {
-                    step.className = "h-2 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-400 border border-purple-300 shadow-sm shadow-purple-500/50";
-                } else {
-                    step.className = "h-2 rounded-full bg-purple-950/80 border border-purple-800/50";
-                }
-            }
-        }
-
-        function triggerUnlockAnimation() {
-            document.getElementById('unlock-section').classList.add('hidden');
-            document.getElementById('unlocked-action-card').classList.remove('hidden');
-            document.getElementById('unlocked-action-card').classList.add('flex');
-
-            try {
-                confetti({
-                    particleCount: 120,
-                    spread: 80,
-                    origin: { y: 0.6 }
-                });
-            } catch (e) {}
-
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred('success');
-            }
-
-            // 4 ആഡുകളും കണ്ടു കഴിഞ്ഞാൽ സ്വയം ഡയറക്റ്റ് റീഡയറക്ട് വേണമെങ്കിൽ താഴെയുള്ള വരി ഉപയോഗിക്കാം:
-            // setTimeout(redirectToGroup, 1500);
-        }
-
-        // ടെലിഗ്രാം ഗ്രൂപ്പിലേക്ക് പോകുന്ന ഫംഗ്ഷൻ
-        function redirectToGroup() {
-            if (tg && tg.openTelegramLink) {
-                tg.openTelegramLink(TELEGRAM_GROUP_LINK);
-            } else {
-                window.location.href = TELEGRAM_GROUP_LINK;
-            }
-        }
-
-        function toggleReaction(type) {
-            const likeBtn = document.getElementById('like-btn');
-            const dislikeBtn = document.getElementById('dislike-btn');
-            const likeIcon = document.getElementById('like-icon');
-            const dislikeIcon = document.getElementById('dislike-icon');
-
-            if (type === 'like') {
-                if (isLiked) {
-                    isLiked = false;
-                    likeCount--;
-                    likeIcon.className = "fa-regular fa-thumbs-up text-xs";
-                } else {
-                    isLiked = true;
-                    likeCount++;
-                    likeIcon.className = "fa-solid fa-thumbs-up text-xs";
-                    if (isDisliked) {
-                        isDisliked = false;
-                        dislikeCount--;
-                        dislikeIcon.className = "fa-regular fa-thumbs-down text-xs";
-                    }
-                }
-            } else if (type === 'dislike') {
-                if (isDisliked) {
-                    isDisliked = false;
-                    dislikeCount--;
-                    dislikeIcon.className = "fa-regular fa-thumbs-down text-xs";
-                } else {
-                    isDisliked = true;
-                    dislikeCount++;
-                    dislikeIcon.className = "fa-solid fa-thumbs-down text-xs";
-                    if (isLiked) {
-                        isLiked = false;
-                        likeCount--;
-                        likeIcon.className = "fa-regular fa-thumbs-up text-xs";
-                    }
-                }
-            }
-
-            document.getElementById('like-count').innerText = formatNumber(likeCount);
-            document.getElementById('dislike-count').innerText = formatNumber(dislikeCount);
-        }
-
-        function formatNumber(num) {
-            return num >= 1000 ? (num / 1000).toFixed(1) + 'k' : num;
-        }
-
-        function showToast(msg, iconClass = "fa-info-circle") {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-msg');
-            const toastIcon = document.getElementById('toast-icon');
-
-            toastMsg.innerText = msg;
-            toastIcon.innerHTML = `<i class="fas ${iconClass}"></i>`;
-
-            toast.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
-            toast.classList.add('opacity-100', 'translate-y-0');
-
-            setTimeout(() => {
-                toast.classList.remove('opacity-100', 'translate-y-0');
-                toast.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-            }, 2500);
-        }
-    </script>
+  updateAllUI();
+})();
+</script>
 </body>
 </html>
